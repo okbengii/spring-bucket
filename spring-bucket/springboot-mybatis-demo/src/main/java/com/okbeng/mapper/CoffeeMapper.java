@@ -30,4 +30,11 @@ public interface CoffeeMapper {
     })
     Coffee findById(@Param("id") Long id);
 
+    @Select("select * from t_coffee where name = #{name}")
+    @Results({ @Result(id = true, column = "id", property = "id"),
+            @Result(column = "create_time", property = "createTime"),
+            // map-underscore-to-camel-case = true 可以实现一样的效果
+            @Result(column = "update_time", property = "updateTime"), })
+    Coffee findByName(@Param("name") String name);
+
 }
