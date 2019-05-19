@@ -10,6 +10,7 @@
 		<module>spring-cloud-eureka-client</module>
 		<module>spring-cloud-eureka-ribbon</module>
 		<module>spring-cloud-eureka-provider8082</module>
+		<module>springboot-mybatis-demo</module>
 	</modules>
 	<!-- 使用 1.5.6 ,起初使用1.5.9 报错 -->
 	<parent>
