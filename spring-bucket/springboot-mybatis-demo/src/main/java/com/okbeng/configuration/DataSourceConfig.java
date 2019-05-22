@@ -17,11 +17,6 @@ import com.alibaba.druid.pool.DruidDataSource;
 @ComponentScan(basePackages = { "com.gitee.sunchenbin.mybatis.actable.manager.*" })
 public class DataSourceConfig {
 
-    /**
-     * @author 徐森威
-     * @date 2017/11/14
-     */
-
     @Value("${spring.datasource.driver-class-name}")
     private String driver;
 
