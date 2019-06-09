@@ -43,6 +43,14 @@ public class RedisUtils {
     }
 
     /**
+     * @param key
+     * @return
+     */
+    public static Long incr(String key) {
+        return jedis.incr(key);
+    }
+
+    /**
      * 根据 key 获取 value
      * 
      * @param key
