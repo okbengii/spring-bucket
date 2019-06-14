@@ -5,13 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
-@RequestMapping("/")
+@RequestMapping(value="/")
+@Slf4j
 public class HelloController {
 
-    @RequestMapping("/hello")
+    @RequestMapping(value="/hello")
     @ResponseBody
     public String hello() {
+        System.out.println("hello world!");
         return "hello world!";
     }
 }
