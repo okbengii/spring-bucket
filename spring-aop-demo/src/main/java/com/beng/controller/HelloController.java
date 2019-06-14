@@ -16,6 +16,12 @@ public class HelloController {
     @ResponseBody
     public String hello() {
         System.out.println("hello world!");
+        try{
+            int i = 1/0;
+        }catch(Exception e){
+            throw e;
+        }
+
         return "hello world!";
     }
 }
