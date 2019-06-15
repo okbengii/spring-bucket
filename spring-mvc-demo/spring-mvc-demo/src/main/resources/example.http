@@ -1,5 +1,24 @@
 ### GET
-GET http://localhost:8080/coffee/
+GET http://localhost:8080/coffee/list
+
+### GET
+GET http://localhost:8080/coffee/reload
+
+### GET
+GET http://localhost:8080/coffee/get/latte
+
+### GET
+GET http://localhost:8080/coffee/delete/latte
+
+### Coffee Post
+POST http://localhost:8080/coffee/update
+Content-Type: application/json
+
+{
+    "id": 2,
+    "name": "latte",
+    "price": 1000
+}
 
 ### POST
 POST http://localhost:8080/order/ HTTP/1.1
