@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/**
+ * 拦截 ValidationException 异常进行处理，并将处理结果返回
+ * @ExceptionHandler 主要应用这个注解
+ */
 @RestControllerAdvice
 public class GlobalControllerAdvice {
     @ExceptionHandler(ValidationException.class)

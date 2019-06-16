@@ -64,7 +64,9 @@ public class CoffeeController {
     }
 
     /**
-     * BindingResult 获取校验失败的结果
+     * 1. BindingResult 获取校验失败的结果
+     * 
+     * 2. 抛出自定义异常 FormValidationException
      * 
      * @param newCoffee
      * @param result
@@ -83,9 +85,9 @@ public class CoffeeController {
     }
 
     /**
-     * consumes 表示接受的请求必须是表单形式 application/x-www-form-urlencoded；同时直接用
-     * NewCoffeeRequest映射，其实使用了 @RequestParams
-     * 
+     * 1. consumes 表示接受的请求必须是表单形式 application/x-www-form-urlencoded；同时直接用
+     * 2. NewCoffeeRequest映射，其实使用了 @RequestParams
+     * 3. ValidationException 抛出该异常，并通过 @ExceptionHandler 捕获该异常 
      * @param newCoffee
      * @return
      */
