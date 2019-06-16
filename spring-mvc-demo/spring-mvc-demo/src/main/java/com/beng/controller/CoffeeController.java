@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.beng.controller.exception.FormValidationException;
 import com.beng.controller.request.NewCoffeeRequest;
 import com.beng.model.Coffee;
 import com.beng.service.CoffeeService;
@@ -44,12 +46,12 @@ public class CoffeeController {
     }
 
     /**
-     * produces 定义返回结果 accept
+     * 可以返回xml; produces 定义返回结果 accept
      * 
      * @param name
      * @return
      */
-    @GetMapping(path = "/get/{name}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(path = "/get/{name}", produces = MediaType.ALL_VALUE)
     @ResponseBody
     public Coffee getCoffeeByName(@PathVariable(value = "name") String name) {
         return coffeeService.getCoffeeByName(name);
@@ -75,7 +77,7 @@ public class CoffeeController {
         if (result.hasErrors()) {
             // 这里先简单处理一下，后续讲到异常处理时会改
             log.warn("Binding Errors: {}", result);
-            return null;
+            throw new FormValidationException(result);
         }
         return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
     }
@@ -90,7 +92,12 @@ public class CoffeeController {
     @PostMapping(path = "/save", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Coffee addCoffeeWithoutBindingResult(@Valid NewCoffeeRequest newCoffee) {
+    public Coffee addCoffeeWithoutBindingResult(@Valid NewCoffeeRequest newCoffee, BindingResult result) {
+        if (result.hasErrors()) {
+            // 这里先简单处理一下，后续讲到异常处理时会改
+            log.warn("Binding Errors: {}", result);
+            throw new ValidationException(result.toString());
+        }
         return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
     }
 

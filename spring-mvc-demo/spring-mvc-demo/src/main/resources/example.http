@@ -6,6 +6,8 @@ GET http://localhost:8080/coffee/reload
 
 ### GET
 GET http://localhost:8080/coffee/get/latte
+Content-Type: appplication/xml
+Accept: application/xml
 
 ### GET
 GET http://localhost:8080/coffee/delete/latte
@@ -30,7 +32,7 @@ content-type: application/json
 }
 
 ### Coffee Post 测试 validate(表单模式)
-POST http://localhost:8080/coffee/save?name=latte&price=1000
+POST http://localhost:8080/coffee/save?name=latte
 Content-Type: application/x-www-form-urlencoded
 ### v2 捕获异常，返回结果
 POST http://localhost:8080/coffee/savev2?name=latte
