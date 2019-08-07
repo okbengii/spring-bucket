@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 public class CsvUtils {
-    private final String CSVPATH = "/Users/apple/Desktop/项目文档/三方/三方对应关系/三方服务信息沉淀/api服务码表-表格 1.csv";
+    private final String CSVPATH = "demo.csv";
 
     @Autowired
     private CoffeeService requestInterfaceService;
