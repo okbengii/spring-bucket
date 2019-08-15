@@ -20,6 +20,11 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.5.5</version>
 		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.1</version>
+		</dependency>
 		<!-- 包依赖 -->
 		<dependency>
 			<groupId>junit</groupId>
