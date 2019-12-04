@@ -4,7 +4,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,8 +12,8 @@ import com.beng.lock.DistributedRedisLock;
 import com.beng.lock.RedissonDistributedLocker;
 import com.beng.utils.RedisUtil;
 
-@Controller
-@RequestMapping(value = "/")
+//@Controller
+// @RequestMapping(value = "/")
 public class HelloController {
 
     private static AtomicInteger count = new AtomicInteger(0);

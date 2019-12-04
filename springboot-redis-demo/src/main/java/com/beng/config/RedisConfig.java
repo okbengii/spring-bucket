@@ -2,14 +2,12 @@ package com.beng.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
-@Configuration
-@PropertySource("classpath:application.properties")
+//@Configuration
+// @PropertySource("classpath:application.properties")
 public class RedisConfig {
     @Value("${spring.redis.host}")
     private String host;
@@ -44,5 +42,14 @@ public class RedisConfig {
         JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, null);
         return jedisPool;
     }
+
+    // @Bean
+    // public RedisTemplate redisTemplate(RedisConnectionFactory
+    // redisConnectionFactory) {
+    // RedisTemplate template = new StringRedisTemplate();
+    // template.setConnectionFactory(redisConnectionFactory);
+    //
+    // return template;
+    // }
 
 }

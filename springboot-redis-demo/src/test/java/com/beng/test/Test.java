@@ -6,6 +6,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -27,15 +28,16 @@ public class Test {
         TestRunnable runner = new TestRunnable() {
             @Override
             public void runTest() throws Throwable {
-                String url = "http://localhost:8080/hello";
+                String url = "http://localhost:8099/delStockV3";
                 HttpGet get = new HttpGet(url);
                 CloseableHttpClient client = HttpClientBuilder.create().build();
                 CloseableHttpResponse response = client.execute(get);
+                System.out.println(EntityUtils.toString(response.getEntity()));
                 response.close();
             }
         };
 
-        int runnerCount = 10;
+        int runnerCount = 500;
         // Rnner数组，想当于并发多少个。
         TestRunnable[] trs = new TestRunnable[runnerCount];
         for (int i = 0; i < runnerCount; i++) {
